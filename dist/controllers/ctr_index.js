@@ -190,8 +190,8 @@ controller.listProducts = (req, res) => {
         if (userRowsCategory != null) {
 
           if (err || errCategory) {
-            next(err);
-            next(errCategory);
+            console.log(err);
+            console.log(errCategory);
           }
 
           if (req.session.loggedin) {
