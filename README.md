@@ -30,4 +30,5 @@ modulo para escribir mas dacil el desarrollo modulo nodemon
 Teniendo instalado NodeJs en la maquina en la carpeta principal que es free_market/ ejecutar
 
   > npm i                  <- Instalar todas las dependencias de node modules del proyecto
+  
   > npm run dev            <- Correr el proyecto en un ambiente local
