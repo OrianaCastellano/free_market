@@ -1,0 +1,35 @@
+.cmp-navigation {
+  padding: 24px;
+  font-family: $f-primary;
+  overflow: scroll;
+  border-bottom: 1px solid $c-primary;
+}
+
+.cmp-navigation__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.cmp-navigation__item {
+  width: max-content;
+  padding: 0 16px;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+
+  &:hover {
+    opacity: .3;
+  }
+
+  font {
+    width: max-content;
+  }
+}
+
+@media all and (min-width: 610px) {
+  .cmp-navigation {
+    overflow: visible;
+  }
+}

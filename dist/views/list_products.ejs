@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('snippets/head'); -%>
+  <title>Lista de productos</title>
+</head>
+
+<body>
+  <%- include('snippets/header'); -%>
+
+  <div class="obj-layout-two-cols">
+
+    <% if (dataCategory) { %>
+    <div class="cmp-menu-box">
+      <h4 class="cmp-menu-box__title">Filtrar por</h4>
+      <nav class="cmp-menu-nav">
+        <% for( let i = 0; i < dataCategory.length; i++ ) { %>
+        <button class="cmp-menu-box__link js-filter-btn" id="<%= dataCategory[i].category_id %>">
+          <%= dataCategory[i].category_name %>
+        </button>
+        <% } %>
+      </nav>
+    </div>
+    <% } %>
+
+    <section class="cmp-menu-box__section">
+
+      <h1 class="obj-title-section">Buscar productos</h1>
+
+
+      <div class="swiper-container swiper-product">
+        <div class="swiper-wrapper cmp-slider-product__wrapper">
+          <% for( let i = 0; i < data.length; i++ ) { %>
+            <article data-filter="<%=  data[i].tbl_category_category_id %>" class="swiper-slide js-filter-card">
+              <a href="/detail_product/<%= data[i].product_id %> ">
+    
+                <figure>
+                  <img src="" alt="">
+                </figure>
+                <h3> <%= data[i].product_title %> </h3>
+                <strong> <%= data[i].product_price %> </strong>
+              </a>
+            </article>
+            <% } %>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="static/js/swiper-product.js"></script>
+  <script src="static/js/filter.js"></script>
+</body>
+
+</html>

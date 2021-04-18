@@ -1,0 +1,10 @@
+.cmp-slider-product__wrapper {
+  flex-direction: row !important;
+
+  .swiper-slide {
+    // flex: 0 1 30%;
+    border: 1px solid #f00;
+    margin-top: 0 !important;
+    margin-bottom: 24px;
+  }
+}

@@ -1,0 +1,40 @@
+<div class="cmp-modal js-modal" data-modal="show_modal_auth">
+  <div class="cmp-modal__main">
+    <h3 class="cmp-modal__title">Iniciar sesión o Registrarse</h3>
+    <p class="cmp-modal__txt">Ingresa al sistema o empieza a hacer parte de nuestra comunidad.</p>
+    <div class="cmp-modal__content">
+      <form class="cmp-form" action="/auth" method="post">
+        <div class="cmp-form__box"><label class="cmp-form__label">Correo electronico</label><input
+            class="cmp-form__input" type="email" name="user_email"></div>
+        <div class="cmp-form__box"><label class="cmp-form__label">Contraseña</label><input class="cmp-form__input"
+            type="password" name="user_pass"></div>
+        <div class="cmp-form__action"><button class="obj-btn" type="submit">Iniciar sesión</button></div>
+      </form>
+    </div>
+    <div class="cmp-modal__divider">
+      <p>ó</p>
+    </div>
+    <div class="cmp-modal__content">
+      <form class="cmp-form" action="/add" method="post">
+        <div class="cmp-form__box"><label class="cmp-form__label">Nombre</label><input class="cmp-form__input"
+            type="text" name="user_name" required></div>
+        <div class="cmp-form__box"><label class="cmp-form__label">Apellidos</label><input class="cmp-form__input"
+            type="text" name="user_lastname" required></div>
+        <div class="cmp-form__box"><label class="cmp-form__label">Tipo documento</label><select class="cmp-form__input"
+            name="user_type_document">
+            <option value="1">C.C </option>
+            <option value="2">C.E</option>
+          </select></div>
+        <div class="cmp-form__box"><label class="cmp-form__label">Documento identificación</label><input
+            class="cmp-form__input" type="number" name="user_document_id" required></div>
+        <div class="cmp-form__box"><label class="cmp-form__label">Correo electronico</label><input
+            class="cmp-form__input" type="email" name="user_email" required></div>
+        <div class="cmp-form__box"><label class="cmp-form__label">Celular o Teléfono</label><input
+            class="cmp-form__input" type="number" name="user_phone" required></div>
+        <div class="cmp-form__box"><label class="cmp-form__label">Contraseña</label><input class="cmp-form__input"
+            type="password" name="user_pass" required></div>
+        <div class="cmp-form__action"><button class="obj-btn" type="submit">Registrarme</button></div>
+      </form>
+    </div>
+  </div><button class="cmp-modal__close js-close-modal">X</button>
+</div>

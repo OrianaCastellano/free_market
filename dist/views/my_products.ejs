@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('snippets/head'); -%>
+  <title>Mis productos</title>
+</head>
+
+<body>
+
+  <%- include('snippets/header'); -%>
+
+  <div class="obj-layout-two-cols">
+
+    <div class="cmp-menu-box">
+      <h4 class="cmp-menu-box__title">Menu usuario</h4>
+      <nav class="cmp-menu-nav">
+        <a class="cmp-menu-box__link" href="/update/<%= id %>">Datos de cuenta</a>
+        <a class="cmp-menu-box__link" href="/products/<%= id %> ">Mis productos</a>
+        <a class="cmp-menu-box__link" href="">Reseñas de productos</a>
+      </nav>
+    </div>
+
+    <section class="cmp-menu-box__section">
+
+      <h1 class="obj-title-section">Mis productos</h1>
+
+      <div>
+        <% for( let i = 0; i < data.length; i++ ) { %>
+        <article>
+          <header>
+            <a class="i-trash" href="/delete_product/<%= data[i].product_id %>">Eliminar</a>
+            <a class="i-pencil" href="/update_product/<%= data[i].product_id %>">Editar</a>
+          </header>
+          <a href="/detail_product/<%= data[i].product_id %> ">
+
+            <figure>
+              <img src="" alt="">
+            </figure>
+            <h3> <%= data[i].product_title %> </h3>
+            <strong> <%= data[i].product_price %> </strong>
+          </a>
+        </article>
+        <% } %>
+      </div>
+
+    </section>
+
+  </div>
+
+</body>
+
+</html>

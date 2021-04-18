@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('snippets/head'); -%>
+  <title>Agregar una respuesta</title>
+</head>
+
+<body>
+
+  <%- include('snippets/header'); -%>
+
+  <div>
+    <h1 class="obj-title-section">Crear respuesta</h1>
+    <p>En este espacio puedes opinar en una reseña ya realizada de un producto</p>
+  </div>
+
+  <form class="cmp-form" action="/add_request" method="post">
+
+    <div class="cmp-form__box">
+      <label class="cmp-form__label">
+        Descripción respuesta:
+      </label>
+      <textarea
+        name="request_description"
+        class="cmp-form__input"
+        cols="30" 
+        rows="10"
+      ></textarea>        
+    </div>
+
+    <div class="cmp-form__box">
+      <label class="cmp-form__label">
+        Voto para la reseña:
+      </label>
+      <select class="cmp-form__input" name="request_vote_good">
+          <option value="2">2</option>        
+          <option value="4">4</option>        
+          <option value="6">6</option>        
+          <option value="8">8</option>        
+          <option value="10">10</option>        
+      </select>
+    </div>
+
+    <input type="hidden" name="request_vote_bad" value="0">
+    <input type="hidden" name="tbl_review_review_id" value="<%= request_review_id %> ">
+
+    <div class="cmp-form__action">
+      <button class="obj-btn" type="submit">
+        Crear respuesta
+      </button>
+    </div>
+  </form>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+.obj-title,
+.obj-subtitle {
+  font-family: $f-primary;
+  text-align: center;
+  color: $c-primary;
+}
+
+.obj-title {
+  position: relative;
+  font-size: 30px;
+  font-weight: $f-bold;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 45%;
+    width: 10%;
+    margin: 0 auto;
+    border-bottom: 2px solid $c-primary;
+  }
+}
+
+.obj-subtitle {
+  font-size: 28px;
+}
+
+.obj-title-section {
+  width: 70%;
+  margin: 0 auto 30px auto;
+  font-size: 30px;
+  color: $c-primary;
+}
+
+@media all and (max-width: 768px) {
+  .obj-title {
+    font-size: 24px;
+  }
+
+  .obj-title-section {
+    width: 90%;
+    margin-top: 40px;
+  }
+}

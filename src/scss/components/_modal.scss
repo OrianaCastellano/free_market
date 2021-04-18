@@ -1,0 +1,93 @@
+.cmp-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    z-index: 999;
+    font-family: $f-primary;
+    opacity: 0;
+    z-index: -1000000;
+    transition: all 0.3s ease-in-out;
+}
+
+.is-modal-show {
+    opacity: 1;
+    z-index: 1000000;
+}
+
+.cmp-modal__content {
+    width: 100%;
+}
+
+.cmp-modal__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 90vh;
+    margin: 0 auto;
+    padding: 40px 0;
+    overflow: scroll;
+}
+
+.cmp-modal__main_center {
+    justify-content: center;
+}
+
+.cmp-modal__title {
+    font-size: 34px;
+    color: $c-primary;
+    font-weight: $f-bold;
+    margin-bottom: 8px;
+}
+
+.cmp-modal__txt {
+    font-size: 16px;
+    color: $c-primary;
+    margin-bottom: 40px;
+}
+
+.cmp-modal__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 40px;
+    background: none;
+    border: none;
+    font-size: 40px;
+    font-family: $f-primary;
+    color: $c-primary;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.4;
+    }
+}
+
+.cmp-modal__divider {
+    padding: 40px 0;
+    font-size: 30px;
+    font-weight: $f-bold;
+    position: relative;
+    width: 50%;
+    text-align: center;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        border-bottom: 1px solid $c-primary;
+        z-index: -1;
+    }
+
+    p {
+        width: 10%;
+        margin: 0 auto;
+        background-color: $c-neutro;
+    }
+}

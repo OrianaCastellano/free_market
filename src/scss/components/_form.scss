@@ -1,0 +1,71 @@
+.cmp-form {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.cmp-form__box {
+  display: flex;
+  flex-direction: column;
+}
+
+.cmp-form__label {
+  font-size: 14px;
+  font-weight: $f-bold;
+  color: $c-primary;
+}
+
+.cmp-form__input {
+  margin: 8px 0 16px 0;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid $c-primary;
+
+  &:disabled {
+    background-color: transparent;
+  }
+}
+
+.cmp-form__action {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.cmp-form_disabled {
+  .cmp-form__label {
+    font-size: 16px;
+  }
+
+  .cmp-form__input {
+    border: none;
+    font-size: 14px;
+    color: $c-secondary_100;
+    padding: 0;
+    outline: none;
+  }
+}
+
+.cmp-form__action_flex {
+  .obj-btn {
+    margin-bottom: 8px;
+  }
+}
+
+@media all and (min-width: 768px) {
+  .cmp-form {
+    width: 40%;
+  }
+
+  .cmp-form_long {
+    width: 70%;
+  }
+
+  .cmp-form__action_flex {
+    display: flex;
+    justify-content: space-between;
+
+    .obj-btn {
+      max-width: 150px;
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,72 @@
+<header class="cmp-header">
+
+  <div class="cmp-header__top obj-canvas">
+
+    <div class="cmp-dropdown cmp-header_order">
+      <button class="cmp-dropdown__btn i-after-arrow">Contacto</button>
+      <ul class="cmp-dropdown__list">
+        <li class="cmp-dropdown__item">3232860831</li>
+      </ul>
+    </div>
+
+    <figure class="cmp-header__brand">
+      <img class="cmp-header__img" src="../static/img/logo_free_market.svg" alt="Logo Free Market" />
+    </figure>
+
+    <div class="cmp-dropdown cmp-header_order">
+      <button class="cmp-dropdown__btn
+        cmp-dropdown__btn_ico
+        i-user">
+        Usuario
+        <% if (login) { %>
+        <%= name %>
+        <% } else { %>
+        <%= name %>
+        <% } %>
+      </button>
+      <ul class="cmp-dropdown__list">
+        <% if (!login) { %>
+        <li class="cmp-dropdown__item">
+          <button class="cmp-dropdown__link
+            js-btn-modal" data-modal="show_modal_auth">
+            Ingresar / Registrarme
+          </button>
+        </li>
+        <% } %>
+        <% if (login) { %>
+        <li class="cmp-dropdown__item">
+          <a class="cmp-dropdown__link" href="/profile">
+            Mi Perfil
+          </a>
+        </li>
+        <li class="cmp-dropdown__item">
+          <a class="cmp-dropdown__link" href="/logout">
+            Cerrar sesión
+          </a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+
+  </div>
+</header>
+
+<nav class="cmp-navigation">
+  <div class="cmp-navigation__content">
+    <a class="cmp-navigation__item" href="/">Página Principal</a>
+    <a class="cmp-navigation__item" href="/products">Productos</a>
+    <a class="cmp-navigation__item">Categorias</a>
+    <% if (login) { %>
+      <a
+        class="cmp-navigation__item"
+        href="/form_product"
+      >
+        Crear Producto
+      </a>
+    <% } %>
+  </div>
+</nav>
+
+<%- include('modal_auth'); -%>
+
+<%- include('scripts'); -%>

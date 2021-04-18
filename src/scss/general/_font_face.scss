@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap");
+
+@font-face {
+  font-family: "#{$ico-font-family}";
+  src: url("#{$font-path}/#{$ico-font-family}.eot?");
+  src: url("#{$font-path}/#{$ico-font-family}.eot?#iefix") format("embedded-opentype"),
+    url("#{$font-path}/#{$ico-font-family}.ttf?") format("truetype"),
+    url("#{$font-path}/#{$ico-font-family}.woff?") format("woff"),
+    url("#{$font-path}/#{$ico-font-family}.svg?##{$ico-font-family}") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.i-,
+[class^="i-"],
+[class*=" i-"] {
+  &:before {
+    font-family: "#{$ico-font-family}" !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+.i-after-,
+[class^="i-after-"],
+[class*="i-after-"] {
+  &:after {
+    font-family: "#{$ico-font-family}" !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.i-pencil {
+  &::before {
+    content: $i-pencil;
+  }
+}
+
+.i-check {
+  &::before {
+    content: $i-check;
+  }
+}
+
+.i-copyright {
+  &::before {
+    content: $i-copyright;
+  }
+}
+
+.i-user_double {
+  &::before {
+    content: $i-user_double;
+  }
+}
+
+.i-security {
+  &::before {
+    content: $i-security;
+  }
+}
+
+.i-product {
+  &::before {
+    content: $i-product;
+  }
+}
+
+.i-arrow_double {
+  &::before {
+    content: $i-arrow_double;
+  }
+}
+
+.i-star {
+  &::before {
+    content: $i-star;
+  }
+}
+
+.i-user {
+  &::before {
+    content: $i-user;
+  }
+}
+
+.i-arrow {
+  &::before {
+    content: $i-arrow;
+  }
+}
+
+.i-after-arrow {
+  &::after {
+    content: $i-arrow;
+  }
+}
+
+.i-trash {
+  &::before {
+    content: $i-trash;
+  }
+}

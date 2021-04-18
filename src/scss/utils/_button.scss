@@ -1,0 +1,27 @@
+.obj-btn {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 8px;
+    color: $c-neutro;
+    font-weight: $f-bold;
+    background-color: $c-primary;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+        border: 1px solid $c-primary;
+        color: $c-primary;
+        background-color: transparent;
+    }
+}
+
+.obj-btn_outline {
+    border-color: $c-primary;
+    color: $c-primary;
+    background-color: transparent;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('snippets/head'); -%>
+  <title>Agregar una reseña</title>
+</head>
+
+<body>
+
+  <%- include('snippets/header'); -%>
+
+  <div>
+    <h1 class="obj-title-section">Crear reseña en</h1>
+    <h2> <%= dataProduct.product_title %>   </h2>
+    <p>En este espacio puedes calificar el producto que te gusto</p>
+  </div>
+
+  <form class="cmp-form" action="/add_review" method="post">
+
+    <div class="cmp-form__box">
+      <label class="cmp-form__label">
+        Titulo reseña
+      </label>
+      <input
+        class="cmp-form__input"
+        type="text" 
+        name="review_title" 
+        required
+      >
+    </div>
+
+    <div class="cmp-form__box">
+      <label class="cmp-form__label">
+        Descripción reseña
+      </label>
+      <textarea
+        class="cmp-form__input"
+        name="review_description"
+        cols="30"
+        rows="10"
+      >
+      </textarea>
+    </div>
+
+    <div class="cmp-form__box">
+      <label class="cmp-form__label">
+        Calificación producto
+      </label>
+      <select class="cmp-form__input" name="review_qualification">
+          <option value="2">2</option>        
+          <option value="4">4</option>        
+          <option value="6">6</option>        
+          <option value="8">8</option>        
+          <option value="10">10</option>        
+      </select>
+    </div>
+
+    <input type="hidden" name="tbl_product_product_id" value="<%= dataProduct.product_id %>">
+    <input type="hidden" name="tbl_user_user_id" value="<%= id_user %>">
+
+    <div class="cmp-form__action">
+      <button class="obj-btn" type="submit">
+        Crear producto
+      </button>
+    </div>
+  </form>
+</body>
+
+</html>

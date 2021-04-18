@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('snippets/head'); -%>
+  <title>Perfil <%= name %> </title>
+</head>
+
+<body>
+  <header>
+    <%- include('snippets/header'); -%>
+  </header>
+
+  <div class="obj-layout-two-cols">
+
+    <div class="cmp-menu-box">
+      <h4 class="cmp-menu-box__title">Menu usuario</h4>
+      <nav class="cmp-menu-nav">
+        <a class="cmp-menu-box__link" href="/update/<%= id %>">Datos de cuenta</a>
+        <a class="cmp-menu-box__link" href="/products/<%= id %> ">Mis productos</a>
+        <a class="cmp-menu-box__link" href="">Reseñas de productos</a>
+      </nav>
+    </div>
+
+    <section class="cmp-menu-box__section">
+
+      <% if (update) { %>
+      <p>Se ha modificado el usuario correctamente</p>
+      <% } %>
+
+      <% if (updateProduct) { %>
+        <p>Se ha modificado el producto correctamente</p>
+      <% } %>
+
+      <h1 class="obj-title-section">Perfil <%= name %> <%= lastname %></h1>
+      <form class="cmp-form cmp-form_long cmp-form_disabled" action="/add" method="post">
+        <div class="cmp-form__box">
+          <label class="cmp-form__label">
+            Nombre
+          </label>
+          <input class="cmp-form__input" disabled type="text" name="user_name" required value="<%= name %>">
+        </div>
+        <div class="cmp-form__box">
+          <label class="cmp-form__label">
+            Apellidos
+          </label>
+          <input class="cmp-form__input" disabled type="text" name="user_lastname" required value="<%= lastname %>">
+        </div>
+        <div class="cmp-form__box">
+          <label class="cmp-form__label">
+            Documento identificación
+          </label>
+          <input class="cmp-form__input" disabled type="number" name="user_document_id" required
+            value="<%= document_id %>">
+        </div>
+        <div class="cmp-form__box">
+          <label class="cmp-form__label">
+            Correo electronico
+          </label>
+          <input class="cmp-form__input" disabled type="email" name="user_email" required value="<%= email %>">
+        </div>
+        <div class="cmp-form__box">
+          <label class="cmp-form__label">
+            Celular o Teléfono
+          </label>
+          <input class="cmp-form__input" disabled type="number" name="user_phone" required value="<%= phone %>">
+        </div>
+        <div class="cmp-form__box">
+          <label class="cmp-form__label">Contraseña</label>
+          <input class="cmp-form__input" disabled type="password" name="user_pass" required value="<%= pass %>">
+        </div>
+        <div class="cmp-form__action cmp-form__action_flex">
+          <a class="obj-btn" href="/update/<%= id %>" type="submit">
+            Editar datos
+          </a>
+          <button class="obj-btn obj-btn_outline js-btn-modal" type="button" data-modal="delete_user">Eliminar
+            usuario</button>
+        </div>
+      </form>
+
+    </section>
+
+  </div>
+
+  <%- include('snippets/modal_auth'); -%>
+  <%- include('snippets/modal_delete'); -%>
+
+</body>
+
+</html>

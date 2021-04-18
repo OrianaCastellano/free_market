@@ -1,0 +1,38 @@
+.obj-canvas {
+	width: 90%;
+	max-width: 1440px;
+	margin: 0 auto;
+}
+
+.obj-section {
+	padding: 32px;
+}
+
+.obj-section_primary {
+	background-color: $c-primary;
+}
+
+.obj-layout-two-cols {
+	width: 90%;
+	max-width: 1200px;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 40px 0;
+}
+
+@media all and (min-width: 768px) {
+	.obj-layout-two-cols {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+
+		.cmp-menu-box {
+			flex: 1 0 30%;
+		}
+
+		.cmp-menu-box__section {
+			flex: 1 0 70%;
+			width: 100%;
+		}
+	}
+}

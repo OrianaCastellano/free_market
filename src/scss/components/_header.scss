@@ -1,0 +1,42 @@
+.cmp-header {
+	padding: 20px 0;
+	border-bottom: 1px solid $c-primary;
+}
+
+.cmp-header__top {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.cmp-header__brand {
+	order: 1;
+	flex: 1 1 100%;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.cmp-header_order {
+	&:first-child {
+		order: 2;
+	}
+	&:last-child {
+		order: 3;
+	}
+}
+
+@media all and (min-width: 768px) {
+	.cmp-header__brand {
+		flex: 0 1 auto;
+		order: initial;
+		margin-bottom: 0;
+	}
+
+	.cmp-header_order {
+		&:first-child,
+		&:last-child {
+			order: initial;
+		}
+	}
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('snippets/head'); -%>
+  <title>Editar Producto <%=  %> </title>
+</head>
+<body>
+  
+  <%- include('snippets/header'); -%>
+
+  <div class="obj-layout-two-cols">
+
+    <div class="cmp-menu-box">
+      <h4 class="cmp-menu-box__title">Menu usuario</h4>
+      <nav class="cmp-menu-nav">
+        <a class="cmp-menu-box__link" href="update/<%= id %>">Datos de cuenta</a>
+        <a class="cmp-menu-box__link" href="">Mis productos</a>
+        <a class="cmp-menu-box__link" href="">Reseñas de productos</a>
+      </nav>
+    </div>
+
+    <section class="cmp-menu-box__section">
+      <h1 class="obj-title-section">Producto <%= data.product_title %></h1>
+      <form action="/update_product/<%= data.product_id %>" method="POST" class="cmp-form cmp-form_long">
+        <div class="cmp-form__box">
+          <label class="cmp-form__label">
+            Titulo producto
+          </label>
+          <input
+            class="cmp-form__input"
+            type="text" 
+            name="product_title" 
+            required
+            value="<%= data.product_title %>"
+          >
+        </div>
+    
+        <div class="cmp-form__box">
+          <label class="cmp-form__label">
+            Descripción producto
+          </label>
+          <textarea
+            class="cmp-form__input"
+            name="product_description"
+            cols="30"
+            rows="10"
+          >
+            <%= data.product_description %>
+          </textarea>
+        </div>
+    
+        <div class="cmp-form__box">
+          <label class="cmp-form__label">
+            Imagen producto
+          </label>
+          <input
+            class="cmp-form__input"
+            type="file" 
+            name="product_image"
+          >
+        </div>
+    
+        <div class="cmp-form__box">
+          <label class="cmp-form__label">
+            Precio producto
+          </label>
+          <input
+            class="cmp-form__input"
+            type="text" 
+            name="product_price" 
+            value="<%= data.product_price %>"            
+          >
+        </div>
+    
+        <div class="cmp-form__box">
+          <label class="cmp-form__label">
+            Categoria producto
+          </label>
+          <select class="cmp-form__input" name="tbl_category_category_id">
+            <% for( let i = 0; i < dataCategory.length; i++ ) { %>
+              <option
+                value="<%= dataCategory[i].category_id %>"
+              >
+                <%= dataCategory[i].category_name %>
+              </option>        
+            <% } %>
+          </select>
+        </div>
+
+        <div class="cmp-form__action cmp-form__action_flex">
+          <button type="submit" class="obj-btn">Confirmar edición</button>
+          <a href="/products/<%= id %>" class="obj-btn obj-btn_outline">Volver</a>
+        </div>
+      </form>
+    </section>
+  </div>
+
+</body>
+</html>

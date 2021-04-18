@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('snippets/head'); -%>
+  <title>Respuesta de la reseña</title>
+</head>
+
+<body>
+  <%- include('snippets/header'); -%>
+
+  <h2>Respuestas de usuarios</h2>
+
+  <div>
+    <% if (data.length) { %>
+    <% for( let i = 0; i < data.length; i++ ) { %>
+    <div>
+      <p><%= data[i].request_description %></p>
+      <strong> <%= data[i].request_vote_good %> </strong>
+      <a href="/delete_request/<%= data[i].request_id %>">Eliminar respuesta</a>
+    </div>
+    <% } %>
+    <% } else { %>
+    <h1>aun no hay respuesta de la reseña, puedes crear una</h1>
+    <% } %>
+
+    <a href="/form_request/<%= request_id_review %> ">Crear respuesta</a>
+  </div>
+
+</body>
+
+</html>

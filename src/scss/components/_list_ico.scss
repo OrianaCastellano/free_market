@@ -1,0 +1,42 @@
+.cmp-list-ico__item {
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-family: $f-primary;
+    color: $c-neutro;
+}
+
+.cmp-list-ico__txt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    &::before {
+        margin-bottom: 16px;
+        font-size: 50px;
+    }
+}
+
+@media all and (min-width: 768px) {
+    .cmp-list-ico {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .cmp-list-ico__item {
+        margin-bottom: 0;
+    }
+    
+    .cmp-list-ico__txt {
+        flex-direction: row;
+        text-align: left;
+        font-size: 14px;
+
+        &::before {
+            margin-bottom: 0;
+            margin-right: 16px;
+        }
+    }
+}
