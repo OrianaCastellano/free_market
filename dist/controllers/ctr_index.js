@@ -76,16 +76,19 @@ controller.editUser = (req, res) => {
 
   req.getConnection((err, conn) => {
     conn.query('SELECT * FROM tbl_user WHERE user_id = ?', [id], (err, user) => {
-      console.log(user)
-      if (req.session.loggedin) {
-        res.render('edit', {
-          data: user[0],
-          login: true,
-          id: req.session.user_id,
-          name: req.session.name,
-          update: false,
-          updateProduct: false
-        });
+      if (user != null) {
+        if (req.session.loggedin) {
+          res.render('edit', {
+            data: user[0],
+            login: true,
+            id: req.session.user_id,
+            name: req.session.name,
+            update: false,
+            updateProduct: false
+          });
+        }
+      } else {
+        res.redirect('/?users=none')
       }
     });
   })
@@ -97,19 +100,23 @@ controller.updateUser = (req, res) => {
   const userUpdate = req.body;
   req.getConnection((err, conn) => {
     conn.query('UPDATE tbl_user SET ? WHERE user_id = ?', [userUpdate, id], (err, rowuserUpdate) => {
-      if (req.session.loggedin) {
-        res.render('profile', {
-          login: true,
-          id: userUpdate.user_id,
-          name: userUpdate.user_name,
-          lastname: userUpdate.user_lastname,
-          document_id: userUpdate.user_document_id,
-          email: userUpdate.user_email,
-          phone: userUpdate.user_phone,
-          pass: userUpdate.user_pass,
-          update: true,
-          updateProduct: false
-        });
+      if (rowuserUpdate != null) {
+        if (req.session.loggedin) {
+          res.render('profile', {
+            login: true,
+            id: userUpdate.user_id,
+            name: userUpdate.user_name,
+            lastname: userUpdate.user_lastname,
+            document_id: userUpdate.user_document_id,
+            email: userUpdate.user_email,
+            phone: userUpdate.user_phone,
+            pass: userUpdate.user_pass,
+            update: true,
+            updateProduct: false
+          });
+        }
+      } else {
+        res.redirect('/?update_user=none')
       }
     });
   })
@@ -180,28 +187,30 @@ controller.listProducts = (req, res) => {
     conn.query("SELECT * FROM tbl_product", (err, userRows) => {
       conn.query("SELECT * FROM tbl_category", (errCategory, userRowsCategory) => {
 
-        console.log('USER ROWWW')
-        console.log(userRows)
+        if (userRowsCategory != null) {
 
-        if (err || errCategory) {
-          next(err);
-          next(errCategory);
-        }
+          if (err || errCategory) {
+            next(err);
+            next(errCategory);
+          }
 
-        if (req.session.loggedin) {
-          res.render('list_products', {
-            data: userRows,
-            dataCategory: userRowsCategory,
-            login: true,
-            name: req.session.name,
-          });
+          if (req.session.loggedin) {
+            res.render('list_products', {
+              data: userRows,
+              dataCategory: userRowsCategory,
+              login: true,
+              name: req.session.name,
+            });
+          } else {
+            res.render('list_products', {
+              login: false,
+              name: 'anonimo',
+              data: userRows,
+              dataCategory: userRowsCategory
+            })
+          }
         } else {
-          res.render('list_products', {
-            login: false,
-            name: 'anonimo',
-            data: userRows,
-            dataCategory: userRowsCategory
-          })
+          res.redirect('/?products=none')
         }
 
       });
@@ -214,13 +223,17 @@ controller.listProductsUser = (req, res) => {
 
   req.getConnection((err, conn) => {
     conn.query('SELECT * FROM tbl_product WHERE tbl_user_user_id = ?', [id], (err, products) => {
-      if (req.session.loggedin) {
-        res.render('my_products', {
-          data: products,
-          login: true,
-          id: req.session.user_id,
-          name: req.session.name
-        });
+      if (products != none) {
+        if (req.session.loggedin) {
+          res.render('my_products', {
+            data: products,
+            login: true,
+            id: req.session.user_id,
+            name: req.session.name
+          });
+        }
+      } else {
+        res.redirect('/?products_mine=none')
       }
     });
   })
@@ -337,34 +350,38 @@ controller.renderDetailProduct = (req, res) => {
   console.log(req.params)
 
   req.getConnection((err, conn) => {
-    conn.query("SELECT * FROM tbl_product WHERE product_id = ?", [product_id], (err, productRow) => {
-      conn.query("SELECT * FROM tbl_category WHERE category_id = ?", [productRow[0].tbl_category_category_id], (errC, categoryRow) => {
-        conn.query("SELECT * FROM tbl_review WHERE tbl_product_product_id = ?", [productRow[0].product_id], (errR, reviewRow) => {
-          conn.query("SELECT SUM(review_qualification) as sum_quali FROM tbl_review WHERE tbl_product_product_id = ?", [productRow[0].product_id], (errQ, rowSumQualification) => {
+    if (productRow != null && categoryRow != null) {
+      conn.query("SELECT * FROM tbl_product WHERE product_id = ?", [product_id], (err, productRow) => {
+        conn.query("SELECT * FROM tbl_category WHERE category_id = ?", [productRow[0].tbl_category_category_id], (errC, categoryRow) => {
+          conn.query("SELECT * FROM tbl_review WHERE tbl_product_product_id = ?", [productRow[0].product_id], (errR, reviewRow) => {
+            conn.query("SELECT SUM(review_qualification) as sum_quali FROM tbl_review WHERE tbl_product_product_id = ?", [productRow[0].product_id], (errQ, rowSumQualification) => {
 
-            if (err) {
-              next(err);
-            }
+              if (err) {
+                next(err);
+              }
 
-            res.render('detail_product', {
-              data: productRow[0],
-              login: true,
-              id: req.session.user_id,
-              name: req.session.name,
-              lastname: req.session.lastname,
-              document_id: req.session.document_id,
-              email: req.session.email,
-              phone: req.session.phone,
-              pass: req.session.pass,
-              categoryProduct: categoryRow[0].category_name,
-              reviewProduct: reviewRow,
-              sumQualification: rowSumQualification[0].sum_quali
+              res.render('detail_product', {
+                data: productRow[0],
+                login: true,
+                id: req.session.user_id,
+                name: req.session.name,
+                lastname: req.session.lastname,
+                document_id: req.session.document_id,
+                email: req.session.email,
+                phone: req.session.phone,
+                pass: req.session.pass,
+                categoryProduct: categoryRow[0].category_name,
+                reviewProduct: reviewRow,
+                sumQualification: rowSumQualification[0].sum_quali
+              });
+
             });
-
           });
         });
       });
-    });
+    } else {
+      return res.redirect('/profile?detail=none');
+    }
   })
 }
 
