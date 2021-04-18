@@ -48,7 +48,7 @@ controller.listUsers = (req, res) => {
     conn.query("SELECT * FROM tbl_user", (err, userRows) => {
 
       if (err) {
-        next(err);
+        console.log(err);
       }
 
       // console.log(userRows)
@@ -223,7 +223,7 @@ controller.listProductsUser = (req, res) => {
 
   req.getConnection((err, conn) => {
     conn.query('SELECT * FROM tbl_product WHERE tbl_user_user_id = ?', [id], (err, products) => {
-      if (products != null) {
+      if (products != none) {
         if (req.session.loggedin) {
           res.render('my_products', {
             data: products,
@@ -244,7 +244,7 @@ controller.renderFormProduct = (req, res) => {
     conn.query("SELECT * FROM tbl_category", (err, userRows) => {
 
       if (err) {
-        next(err);
+        console.log(err);
       }
 
       if (req.session.loggedin) {
@@ -354,11 +354,12 @@ controller.renderDetailProduct = (req, res) => {
       conn.query("SELECT * FROM tbl_category WHERE category_id = ?", [productRow[0].tbl_category_category_id], (errC, categoryRow) => {
         conn.query("SELECT * FROM tbl_review WHERE tbl_product_product_id = ?", [productRow[0].product_id], (errR, reviewRow) => {
           conn.query("SELECT SUM(review_qualification) as sum_quali FROM tbl_review WHERE tbl_product_product_id = ?", [productRow[0].product_id], (errQ, rowSumQualification) => {
-            if (productRow != null && categoryRow != null) {
 
-              if (err) {
-                console.log(err);
-              }
+            if (err) {
+              console.log(err);
+            }
+
+            if (productRow != null) {
 
               res.render('detail_product', {
                 data: productRow[0],
@@ -382,7 +383,6 @@ controller.renderDetailProduct = (req, res) => {
         });
       });
     });
-  } 
   })
 }
 
@@ -393,7 +393,7 @@ controller.renderFormReseña = (req, res) => {
     const { product_id } = req.params;
 
     if (err) {
-      next(err);
+      console.log(err);
     }
 
     conn.query("SELECT * FROM tbl_product WHERE product_id = ?", [product_id], (err, productRow) => {
@@ -451,7 +451,7 @@ controller.saveRequestReview = (req, res) => {
   req.getConnection((err, conn) => {
 
     if (err) {
-      next(err);
+      console.log(err);
     }
 
     conn.query("INSERT INTO tbl_request_review SET ?", [req.body], (err, requestRow) => {
@@ -472,7 +472,7 @@ controller.listRequestReview = (req, res) => {
     conn.query("SELECT * FROM tbl_request_review WHERE tbl_review_review_id = ?", [id_review], (err, reviewRequestRows) => {
 
       if (err) {
-        next(err);
+        console.log(err);
       }
 
       if (req.session.loggedin) {
