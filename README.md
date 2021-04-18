@@ -9,7 +9,7 @@ es una semi tienda virtual, con algunas funcionalidades como las que tiene la p�
 ## Tecnologias utilizadas
 
  * HTML, CSS y JS para toda la parte del Frontend (El frontend es todo lo visual, la parte grafica)
- * Nodejs para el backend y despliegue de la applicación
+ * Nodejs para el backend y despliegue de la aplicación
 ----
 ## Despligue en Heroku
 
@@ -26,3 +26,8 @@ Framework de Node Express, modulo mysql para conectarme a la base de datos, modu
 modulo para escribir mas dacil el desarrollo modulo nodemon
 
 ## Despligue en Local
+
+Teniendo instalado NodeJs en la maquina en la carpeta principal que es free_market/ ejecutar
+
+  > npm i                  <- Instalar todas las dependencias de node modules del proyecto
+  > npm run dev            <- Correr el proyecto en un ambiente local
