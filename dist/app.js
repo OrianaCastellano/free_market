@@ -27,10 +27,10 @@ app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(myConnection(mysql, {
   host: 'us-cdbr-east-03.cleardb.com',
-  user: 'b0ef6788a2b474',
-  password: '8dd9cca6',
+  user: 'bd1a595984bdaf',
+  password: 'd4b32c6a',
   port: 3306,
-  database: 'heroku_3fcc59d364706d6'
+  database: 'heroku_cd05ed895bbf370'
 }, 'single'))
 app.use(session({
   secret: 'keyboard cat',
