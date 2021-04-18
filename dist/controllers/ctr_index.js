@@ -223,7 +223,7 @@ controller.listProductsUser = (req, res) => {
 
   req.getConnection((err, conn) => {
     conn.query('SELECT * FROM tbl_product WHERE tbl_user_user_id = ?', [id], (err, products) => {
-      if (products != none) {
+      if (products != null) {
         if (req.session.loggedin) {
           res.render('my_products', {
             data: products,
