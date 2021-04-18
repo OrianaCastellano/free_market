@@ -350,14 +350,14 @@ controller.renderDetailProduct = (req, res) => {
   console.log(req.params)
 
   req.getConnection((err, conn) => {
-    if (productRow != null && categoryRow != null) {
-      conn.query("SELECT * FROM tbl_product WHERE product_id = ?", [product_id], (err, productRow) => {
-        conn.query("SELECT * FROM tbl_category WHERE category_id = ?", [productRow[0].tbl_category_category_id], (errC, categoryRow) => {
-          conn.query("SELECT * FROM tbl_review WHERE tbl_product_product_id = ?", [productRow[0].product_id], (errR, reviewRow) => {
-            conn.query("SELECT SUM(review_qualification) as sum_quali FROM tbl_review WHERE tbl_product_product_id = ?", [productRow[0].product_id], (errQ, rowSumQualification) => {
+    conn.query("SELECT * FROM tbl_product WHERE product_id = ?", [product_id], (err, productRow) => {
+      conn.query("SELECT * FROM tbl_category WHERE category_id = ?", [productRow[0].tbl_category_category_id], (errC, categoryRow) => {
+        conn.query("SELECT * FROM tbl_review WHERE tbl_product_product_id = ?", [productRow[0].product_id], (errR, reviewRow) => {
+          conn.query("SELECT SUM(review_qualification) as sum_quali FROM tbl_review WHERE tbl_product_product_id = ?", [productRow[0].product_id], (errQ, rowSumQualification) => {
+            if (productRow != null && categoryRow != null) {
 
               if (err) {
-                next(err);
+                console.log(err);
               }
 
               res.render('detail_product', {
@@ -374,14 +374,15 @@ controller.renderDetailProduct = (req, res) => {
                 reviewProduct: reviewRow,
                 sumQualification: rowSumQualification[0].sum_quali
               });
+            } else {
+              return res.redirect('/profile?detail=none');
+            }
 
-            });
           });
         });
       });
-    } else {
-      return res.redirect('/profile?detail=none');
-    }
+    });
+  } 
   })
 }
 
