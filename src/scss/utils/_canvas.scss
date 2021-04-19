@@ -20,6 +20,11 @@
 	padding: 40px 0;
 }
 
+.obj-column-70 {
+	width: 70%;
+	margin: 0 auto;
+}
+
 @media all and (min-width: 768px) {
 	.obj-layout-two-cols {
 		display: flex;

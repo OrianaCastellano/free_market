@@ -2,9 +2,71 @@
   flex-direction: row !important;
 
   .swiper-slide {
-    // flex: 0 1 30%;
-    border: 1px solid #f00;
     margin-top: 0 !important;
     margin-bottom: 24px;
+    width: 180px !important;
+  }
+}
+
+.swiper-product {
+  width: 70% !important;
+}
+
+.cmp-product {
+  text-decoration: none;
+  color: $c-primary;
+  transition: all .4s ease-in-out;
+
+  &:hover {
+    opacity: .5;
+  }
+}
+
+.cmp-product__mask {
+  height: 90px;
+  margin-bottom: 8px;
+  border: 1px dashed;
+}
+
+.cmp-product__title {
+  margin-bottom: 8px;
+  font-size: $font-size-base;
+  font-weight: $f-bold;
+}
+
+.cmp-product__price {
+  font-size: 14px;
+
+  &::before {
+    content: "$";
+    margin-right: 4px;
+  }
+}
+
+.cmp-product__action {
+  margin-bottom: 8px;
+  text-align: right;
+
+  .i-trash,
+  .i-pencil {
+    font-size: 12px;
+    margin-left: 8px;
+    text-decoration: none;
+
+    &::before {
+      margin-right: 4px;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .i-trash {
+    color: $c-on-error;
+  }
+
+  .i-pencil {
+    color: $c-on-edit;
   }
 }

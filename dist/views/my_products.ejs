@@ -25,20 +25,20 @@
 
       <h1 class="obj-title-section">Mis productos</h1>
 
-      <div>
+      <div class="obj-column-70">
         <% for( let i = 0; i < data.length; i++ ) { %>
         <article>
-          <header>
+          <header class="cmp-product__action">
             <a class="i-trash" href="/delete_product/<%= data[i].product_id %>">Eliminar</a>
             <a class="i-pencil" href="/update_product/<%= data[i].product_id %>">Editar</a>
           </header>
-          <a href="/detail_product/<%= data[i].product_id %> ">
+          <a class="cmp-product" href="/detail_product/<%= data[i].product_id %> ">
 
-            <figure>
+            <figure class="cmp-product__mask">
               <img src="" alt="">
             </figure>
-            <h3> <%= data[i].product_title %> </h3>
-            <strong> <%= data[i].product_price %> </strong>
+            <h3 class="cmp-product__title"> <%= data[i].product_title %> </h3>
+            <strong class="cmp-product__price"> <%= data[i].product_price %> </strong>
           </a>
         </article>
         <% } %>

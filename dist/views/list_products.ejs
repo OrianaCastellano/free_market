@@ -33,13 +33,13 @@
         <div class="swiper-wrapper cmp-slider-product__wrapper">
           <% for( let i = 0; i < data.length; i++ ) { %>
             <article data-filter="<%=  data[i].tbl_category_category_id %>" class="swiper-slide js-filter-card">
-              <a href="/detail_product/<%= data[i].product_id %> ">
+              <a class="cmp-product" href="/detail_product/<%= data[i].product_id %> ">
     
-                <figure>
+                <figure class="cmp-product__mask">
                   <img src="" alt="">
                 </figure>
-                <h3> <%= data[i].product_title %> </h3>
-                <strong> <%= data[i].product_price %> </strong>
+                <h3 class="cmp-product__title"> <%= data[i].product_title %> </h3>
+                <strong class="cmp-product__price"> <%= data[i].product_price %> </strong>
               </a>
             </article>
             <% } %>
