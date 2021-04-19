@@ -9,23 +9,27 @@
 <body>
   <%- include('snippets/header'); -%>
 
-  <h2>Respuestas de usuarios</h2>
+  <h2 class="obj-subtitle obj-subtitle_space">Respuestas de usuarios</h2>
 
-  <div>
-    <% if (data.length) { %>
-    <% for( let i = 0; i < data.length; i++ ) { %>
-    <div>
-      <p><%= data[i].request_description %></p>
-      <strong> <%= data[i].request_vote_good %> </strong>
-      <a href="/delete_request/<%= data[i].request_id %>">Eliminar respuesta</a>
+  <div class="cmp-rta">
+    <div class="cmp-rta__item">
+      <% if (data.length) { %>
+      <% for( let i = 0; i < data.length; i++ ) { %>
+        <h2 class="cmp-rta__title">Respuesta # <%= i + 1 %> </h2>
+      <div>
+        <p class="cmp-rta__text"><%= data[i].request_description %></p>
+        <strong class="cmp-rta__text"> Voto: <%= data[i].request_vote_good %> </strong>
+        <a class="cmp-rta__action" href="/delete_request/<%= data[i].request_id %>">Eliminar respuesta</a>
+      </div>
+      <% } %>
+      <% } else { %>
+      <h1 class="obj-subtitle">aun no hay respuesta de la reseña, puedes crear una</h1>
+      <% } %>
+  
+      <a style="margin-top:88px;" class="obj-btn" href="/form_request/<%= request_id_review %> ">Crear respuesta</a>
     </div>
-    <% } %>
-    <% } else { %>
-    <h1>aun no hay respuesta de la reseña, puedes crear una</h1>
-    <% } %>
-
-    <a href="/form_request/<%= request_id_review %> ">Crear respuesta</a>
   </div>
+
 
 </body>
 

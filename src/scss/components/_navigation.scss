@@ -18,6 +18,8 @@
   padding: 0 16px;
   cursor: pointer;
   transition: all .3s ease-in-out;
+  color: $c-primary;
+  text-decoration: none;
 
   &:hover {
     opacity: .3;

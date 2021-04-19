@@ -25,6 +25,10 @@
 	margin: 0 auto;
 }
 
+.obj-canvas-space {
+	padding: 20px 0;
+}
+
 @media all and (min-width: 768px) {
 	.obj-layout-two-cols {
 		display: flex;
@@ -39,5 +43,9 @@
 			flex: 1 0 70%;
 			width: 100%;
 		}
+	}
+
+	.obj-canvas-space {
+		padding: 80px 0;
 	}
 }

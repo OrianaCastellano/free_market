@@ -56,5 +56,5 @@ app.use("/static", express.static(__dirname + '/public'));
 
 // Inicializar el servidor
 app.listen(app.get('port'), () => {
-  console.log("run on 3000");
+  console.log("run on: http://localhost:3000/");
 })

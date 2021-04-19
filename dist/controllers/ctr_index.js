@@ -13,8 +13,6 @@ controller.auth = async (req, res) => {
         setInterval(function () {
           conn.query('SELECT 1');
         }, 5000);
-        console.log("AQUI")
-        console.log(rta[0])
         if (rta[0] != null) {
           if (res.length == 0 || pass != rta[0].user_pass) {
             // enviar mensaje para contraseña vacia
@@ -154,7 +152,7 @@ controller.logIn = (req, res) => {
           pass: req.session.pass,
           name_test: rta[0].user_email,
           update: false,
-          updateProduct: false
+          updateProduct: false,
         })
       });
     } else {
@@ -272,7 +270,6 @@ controller.saveProduct = (req, res) => {
       if (err) {
         console.log(err)
       } else {
-        console.log(rowTables);
         res.redirect("products");
       }
     })
@@ -360,21 +357,37 @@ controller.renderDetailProduct = (req, res) => {
             }
 
             if (productRow != null) {
-
-              res.render('detail_product', {
-                data: productRow[0],
-                login: true,
-                id: req.session.user_id,
-                name: req.session.name,
-                lastname: req.session.lastname,
-                document_id: req.session.document_id,
-                email: req.session.email,
-                phone: req.session.phone,
-                pass: req.session.pass,
-                categoryProduct: categoryRow[0].category_name,
-                reviewProduct: reviewRow,
-                sumQualification: rowSumQualification[0].sum_quali
-              });
+              if (req.session.loggedin) {
+                res.render('detail_product', {
+                  data: productRow[0],
+                  login: true,
+                  id: req.session.user_id,
+                  name: req.session.name,
+                  lastname: req.session.lastname,
+                  document_id: req.session.document_id,
+                  email: req.session.email,
+                  phone: req.session.phone,
+                  pass: req.session.pass,
+                  categoryProduct: categoryRow[0].category_name,
+                  reviewProduct: reviewRow,
+                  sumQualification: rowSumQualification[0].sum_quali
+                });
+              } else {
+                res.render('detail_product', {
+                  data: productRow[0],
+                  login: false,
+                  id: req.session.user_id,
+                  name: req.session.name,
+                  lastname: req.session.lastname,
+                  document_id: req.session.document_id,
+                  email: req.session.email,
+                  phone: req.session.phone,
+                  pass: req.session.pass,
+                  categoryProduct: categoryRow[0].category_name,
+                  reviewProduct: reviewRow,
+                  sumQualification: rowSumQualification[0].sum_quali
+                });
+              }
             } else {
               return res.redirect('/profile?detail=none');
             }
@@ -436,13 +449,17 @@ controller.saveReview = (req, res) => {
 //RENDER FORMULARIO RESPUESTA RESEÑA
 controller.renderFormRequestReview = (req, res) => {
   const { review_id } = req.params;
-  console.log(review_id)
   if (req.session.loggedin) {
     res.render('form_add_request', {
       login: true,
       name: req.session.name,
       id_user: req.session.user_id,
       request_review_id: review_id
+    });
+  } else {
+    res.render('home', {
+      login: false,
+      name: 'anonimo'
     });
   }
 }

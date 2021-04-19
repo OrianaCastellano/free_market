@@ -3,41 +3,60 @@
 
 <head>
   <%- include('snippets/head'); -%>
-  <title>Producto nombre producto</title>
+  <title>Producto <%= data.product_title %></title>
 </head>
 
 <body>
   <%- include('snippets/header'); -%>
 
-  <div>
-    <h1> <%= data.product_title %> </h1>
-    <p> <%= data.product_description %> </p>
-    <ul>
-      <li>Categoria: <%= categoryProduct %> </li>
-      <li>Precio: <%= data.product_price %> </li>
-      <li>Puntos totales: <%= sumQualification %> </li>
-    </ul>
-  </div>
+  <div class="obj-canvas obj-canvas-space">
 
-  <a href="/form_review/<%= data.product_id %>">Crear una reseña</a>
+    <div class="cmp-detail">
+      <figure class="cmp-detail__mask">
+        <img src="" alt="">
+      </figure>
+      <div class="cmp-detail__content">
+        <h1> <%= data.product_title %> </h1>
+        <p> <%= data.product_description %> </p>
+        <ul>
+          <li>Categoria:  <strong><%= categoryProduct %></strong></li>
+          <li>Precio: <strong><%= data.product_price %></strong></li>
+          <% if (sumQualification) { %>
+            <li>Puntos totales: <strong><%= sumQualification %></strong></li>
+          <% } %>
+        </ul>
+      </div>
 
-  <h2>Reseñas de usuarios</h2>
-  <div>
+    </div>
 
-    <% for( let i = 0; i < reviewProduct.length; i++ ) { %>
-      <article>
-        <h3>
-          <span><%= i + 1 %> </span>
-          <%= reviewProduct[i].review_title %>
-        </h3>
-        <strong>puntos: <%= reviewProduct[i].review_qualification %> </strong>
-        <p><%= reviewProduct[i].review_description %></p>
 
-        <a href="/list_request/<%= reviewProduct[i].review_id %>">Ver respuestas de esta reseña</a>
-      </article>
+    <% if (login) { %>
+      <a
+        class="obj-btn obj-btn_outline"
+        href="/form_review/<%= data.product_id %>"
+      >
+        Crear una reseña
+      </a>
     <% } %>
 
+    <h2 class="obj-subtitle obj-subtitle_space">Reseñas de usuarios</h2>
+
+    <div class="cmp-rta">
+      <% for( let i = 0; i < reviewProduct.length; i++ ) { %>
+      <article class="cmp-rta__item">
+        <h3 class="cmp-rta__title">
+          <span>0<%= i + 1 %> </span>
+          <%= reviewProduct[i].review_title %>
+        </h3>
+        <strong class="cmp-rta__text">PUNTOS: <%= reviewProduct[i].review_qualification %> </strong>
+        <p class="cmp-rta__text"><%= reviewProduct[i].review_description %></p>
+
+        <a class="cmp-rta__action" href="/list_request/<%= reviewProduct[i].review_id %>">Ver respuestas de esta reseña</a>
+      </article>
+      <% } %>
+    </div>
   </div>
+
 </body>
 
 </html>

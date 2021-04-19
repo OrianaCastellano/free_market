@@ -6,7 +6,6 @@ function filter() {
     btn.addEventListener("click", e => {
       btnCards.forEach(card => {
         if (e.target.id == card.getAttribute("data-filter")) {
-          console.log(card)
           card.style.display = "block";
         } else {
           card.style.display = "none";

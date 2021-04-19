@@ -21,8 +21,18 @@
 	&:first-child {
 		order: 2;
 	}
+
 	&:last-child {
 		order: 3;
+	}
+}
+
+.cmp-header-title {
+	margin: 40px 0;
+	text-align: center;
+
+	.obj-title-section {
+		margin-bottom: 10px;
 	}
 }
 
@@ -34,6 +44,7 @@
 	}
 
 	.cmp-header_order {
+
 		&:first-child,
 		&:last-child {
 			order: initial;
