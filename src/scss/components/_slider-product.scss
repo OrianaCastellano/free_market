@@ -152,3 +152,10 @@
     text-decoration: none;
   }
 }
+
+.img-product {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

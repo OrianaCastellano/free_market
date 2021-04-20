@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TafurA/free-market.git"
+    "url": "git+https://github.com/OrianaCastellano/free_market/free-market.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TafurA/free-market/issues"
+    "url": "https://github.com/OrianaCastellano/free_market/issues"
   },
-  "homepage": "https://github.com/TafurA/free-market#readme",
+  "homepage": "https://github.com/OrianaCastellano/free_market#readme",
   "devDependencies": {
     "browser-sync": "^2.26.14",
     "gulp": "^4.0.2",
